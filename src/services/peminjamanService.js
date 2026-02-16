@@ -1,7 +1,7 @@
 
 import api from './api';
 
-
+// Status enum
 export const PeminjamanStatus = {
   Pending: 0,
   Approved: 1,
@@ -9,7 +9,7 @@ export const PeminjamanStatus = {
   Completed: 3,
 };
 
-
+// Helper untuk nama status
 export const getStatusName = (status) => {
   const statusMap = {
     0: 'Pending',
@@ -18,6 +18,17 @@ export const getStatusName = (status) => {
     3: 'Completed',
   };
   return statusMap[status] || 'Unknown';
+};
+
+// Helper untuk class CSS status
+export const getStatusClass = (status) => {
+  const classMap = {
+    0: 'status-pending',
+    1: 'status-approved',
+    2: 'status-rejected',
+    3: 'status-completed',
+  };
+  return classMap[status] || '';
 };
 
 export const peminjamanService = {
@@ -33,7 +44,7 @@ export const peminjamanService = {
     return response.data;
   },
 
-  // Create peminjaman
+  // Create new peminjaman
   create: async (data) => {
     const response = await api.post('/api/Peminjaman', data);
     return response.data;

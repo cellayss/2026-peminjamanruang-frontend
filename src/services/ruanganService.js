@@ -14,7 +14,7 @@ export const ruanganService = {
     return response.data;
   },
 
-  // Create ruangan
+  // Create new ruangan
   create: async (data) => {
     const response = await api.post('/api/Ruangan', data);
     return response.data;
