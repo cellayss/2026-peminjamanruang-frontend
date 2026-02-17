@@ -52,11 +52,14 @@ export const peminjamanService = {
 
   // Update status
   updateStatus: async (id, status) => {
-    const response = await api.put(`/api/Peminjaman/${id}/status`, status, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+  return await api.put(
+    `/api/Peminjaman/${id}/status`,
+    { status }
+  );
+  },
+
+  update: async (id, data) => {
+    const response = await api.put(`/api/Peminjaman/${id}`, data);
     return response.data;
   },
 

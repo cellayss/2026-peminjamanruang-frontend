@@ -127,17 +127,10 @@ const PeminjamanEdit = () => {
         endTime: endTime
       };
 
-      // Note: Backend kamu tidak punya endpoint PUT untuk edit peminjaman
-      // Jadi kita perlu delete dan create baru, atau tambahkan endpoint edit di backend
-      // Untuk sementara, saya asumsikan ada endpoint edit (tapi perlu ditambahkan di backend)
-      
-      alert('Fitur edit belum tersedia di backend. Silakan hapus dan buat peminjaman baru.');
+      await peminjamanService.update(id, payload);
+      alert('Peminjaman berhasil diupdate!');
       navigate('/peminjaman');
       
-      // Uncomment ini jika backend sudah punya endpoint edit:
-      // await peminjamanService.update(id, payload);
-      // alert('Peminjaman berhasil diupdate');
-      // navigate('/peminjaman');
       
     } catch (err) {
       alert('Gagal mengupdate peminjaman: ' + (err.response?.data || err.message));
